@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rent a Car</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Rent a Car</h1>
+  <form id="rentalForm">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Email Address" required />
+    <input type="text" name="carModel" placeholder="Car Model" required />
+    <input type="date" name="pickupDate" required />
+    <input type="date" name="returnDate" required />
+    <button type="submit">Book Now</button>
+  </form>
+  <p id="responseMsg"></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
