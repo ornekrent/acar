@@ -41,3 +41,11 @@ button {
   border-radius: 4px;
   cursor: pointer;
 }
+
+a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #007bff;
+  text-decoration: none;
+}
