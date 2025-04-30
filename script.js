@@ -5,7 +5,7 @@ document.getElementById("rentalForm").addEventListener("submit", async (e) => {
   const jsonData = Object.fromEntries(data.entries());
 
   try {
-    const res = await fetch("YOUR_WEB_APP_URL_HERE", {
+    const res = await fetch("https://script.google.com/macros/s/AKfycbxl3gll-inuSdMsC-BFWwEs3-9AgHU2rwO50L5m4wMzVWw-CyNVQVd7gyRc6ALfAuLP/exec", {
       method: "POST",
       body: JSON.stringify(jsonData),
       headers: { "Content-Type": "application/json" },
