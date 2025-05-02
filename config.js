@@ -1,4 +1,4 @@
 const CONFIG = {
-  GOOGLE_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbxl3gll-inuSdMsC-BFWwEs3-9AgHU2rwO50L5m4wMzVWw-CyNVQVd7gyRc6ALfAuLP/exec",
+  GOOGLE_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbwwoOobYaF1CHExsyBmoElgWA9KpUvUCNiYFckq6VLg_AQmOpEIbadLIHS75sGdYLts/exec",
   REDIRECT_AFTER_SUBMIT: "thankyou.html"
 };
