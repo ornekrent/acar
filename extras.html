@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rent-a-Car - Optional Extras</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="./js/extras.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Optional Extras</h1>
+    <form id="extrasForm">
+      <ul class="extras-list">
+        <li>
+          <input type="checkbox" id="gps" name="extras" value="GPS">
+          <label for="gps">GPS Navigation (+ $10/day)</label>
+        </li>
+        <li>
+          <input type="checkbox" id="childSeat" name="extras" value="Child Seat">
+          <label for="childSeat">Child Seat (+ $5/day)</label>
+        </li>
+        <li>
+          <input type="checkbox" id="insurance" name="extras" value="Full Insurance">
+          <label for="insurance">Full Insurance (+ $15/day)</label>
+        </li>
+      </ul>
+      <button type="button" onclick="goToDetails()">Continue to Details</button>
+    </form>
+    <button onclick="goBack()">Go Back</button>
+  </div>
+
+  <script>
+    function goBack() {
+      window.location.href = 'vehicle-selection.html';
+    }
+
+    function goToDetails() {
+      const selectedExtras = Array.from(document.querySelectorAll('input[name="extras"]:checked'))
+        .map(checkbox => checkbox.value);
+      const currentBookingData = JSON.parse(localStorage.getItem('currentBooking')) || {};
+      currentBookingData.extras = selectedExtras;
+      localStorage.setItem('currentBooking', JSON.stringify(currentBookingData));
+      window.location.href = 'details-payment.html';
+    }
+  </script>
+</body>
+</html>
