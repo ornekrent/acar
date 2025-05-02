@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ornek Rent a Car</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="form-container">
+    <h1>Book a Car</h1>
+    <form id="rentalForm">
+      <label for="pickupLocation">Pickup Location</label>
+      <input type="text" name="pickupLocation" required />
+
+      <label for="pickupDate">Pickup Date</label>
+      <input type="date" name="pickupDate" required />
+
+      <label for="pickupTime">Pickup Time</label>
+      <input type="time" name="pickupTime" required />
+
+      <label for="returnDate">Return Date</label>
+      <input type="date" name="returnDate" required />
+
+      <label for="returnTime">Return Time</label>
+      <input type="time" name="returnTime" required />
+
+      <label>
+        <input type="checkbox" name="under25" />
+        I am under 25 years old
+      </label>
+
+      <button type="submit">Next</button>
+    </form>
+  </div>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
