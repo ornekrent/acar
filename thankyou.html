@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thank You</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rent-a-Car - Thank You</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="./js/thankyou.js" defer></script>
 </head>
 <body>
-  <div class="form-container">
+  <div class="container">
     <h1>Thank You!</h1>
-    <p>Your booking information has been submitted successfully.</p>
-    <a href="index.html">← Back to Home</a>
+    <p>Your booking has been submitted successfully.</p>
+    <p>We will contact you shortly with the booking confirmation.</p>
+    <button onclick="goToHomepage()">Back to Homepage</button>
   </div>
+
+  <script>
+    function goToHomepage() {
+      window.location.href = 'index.html';
+    }
+  </script>
 </body>
 </html>
