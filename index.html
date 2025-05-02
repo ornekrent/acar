@@ -1,39 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ornek Rent a Car</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rent-a-Car - Homepage</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="./js/config.js"></script>
+  <script src="./js/index.js" defer></script>
 </head>
 <body>
-  <div class="form-container">
-    <h1>Book a Car</h1>
-    <form id="rentalForm">
-      <label for="pickupLocation">Pickup Location</label>
-      <input type="text" name="pickupLocation" required />
-
-      <label for="pickupDate">Pickup Date</label>
-      <input type="date" name="pickupDate" required />
-
-      <label for="pickupTime">Pickup Time</label>
-      <input type="time" name="pickupTime" required />
-
-      <label for="returnDate">Return Date</label>
-      <input type="date" name="returnDate" required />
-
-      <label for="returnTime">Return Time</label>
-      <input type="time" name="returnTime" required />
-
-      <label>
-        <input type="checkbox" name="under25" />
-        I am under 25 years old
-      </label>
-
-      <button type="submit">Next</button>
+  <div class="container">
+    <h1>Book Your Car</h1>
+    <form id="bookingForm" action="" method="post" target="submissionFrame">
+      <div class="form-group">
+        <label for="pickupLocation">Pickup Location:</label>
+        <input type="text" id="pickupLocation" name="pickupLocation" required>
+      </div>
+      <div class="form-group">
+        <label for="pickupDateTime">Pickup Date and Time:</label>
+        <input type="datetime-local" id="pickupDateTime" name="pickupDateTime" required>
+      </div>
+      <div class="form-group">
+        <label for="returnDateTime">Return Date and Time:</label>
+        <input type="datetime-local" id="returnDateTime" name="returnDateTime" required>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" id="driverUnder25" name="driverUnder25">
+        <label for="driverUnder25">Driver under 25?</label>
+      </div>
+      <button type="submit">Find Cars</button>
+      <input type="hidden" name="redirectUrl" id="redirectUrl" value="vehicle-selection.html">
     </form>
+    <iframe name="submissionFrame" id="submissionFrame" class="hidden-iframe" onload="handleSubmissionResponse()"></iframe>
   </div>
-  <script src="config.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>
