@@ -6,7 +6,6 @@
   <title>Rent-a-Car - Details & Payment</title>
   <link rel="stylesheet" href="style.css">
   <script src="./js/config.js"></script>
-  <script src="./js/details-payment.js" defer></script>
 </head>
 <body>
   <div class="container">
@@ -22,4 +21,107 @@
       </div>
       <div class="form-group">
         <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" name="dob"
+        <input type="date" id="dob" name="dob" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10,}" placeholder="e.g., 5xxxxxxxxx" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="idNumber">ID Number:</label>
+        <input type="text" id="idNumber" name="idNumber" required>
+      </div>
+      <h2>Payment Information</h2>
+      <div class="form-group">
+        <label for="cardNumber">Card Number:</label>
+        <input type="number" id="cardNumber" name="cardNumber" placeholder="XXXX-XXXX-XXXX-XXXX" required>
+      </div>
+      <div class="form-group">
+        <label for="expiryDate">Expiry Date:</label>
+        <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" pattern="^(0[1-9]|1[0-2])\/([2-9][0-9])$" required>
+      </div>
+      <div class="form-group">
+        <label for="cvv">CVV:</label>
+        <input type="number" id="cvv" name="cvv" placeholder="XXX" required>
+      </div>
+      <input type="hidden" name="redirectUrl" id="redirectUrl" value="thankyou.html">
+      <button type="submit">Submit Booking</button>
+    </form>
+    <iframe name="submissionFrame" id="submissionFrame" class="hidden-iframe" onload="handleSubmissionResponse()"></iframe>
+    <button onclick="goBack()">Go Back</button>
+  </div>
+
+  <script>
+    function goBack() {
+      window.location.href = 'extras.html';
+    }
+
+    function handleSubmissionResponse() {
+      // This function will be called when the iframe loads after form submission.
+      // The Google Apps Script backend handles the redirect to the thank you page.
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const detailsPaymentForm = document.getElementById('detailsPaymentForm');
+
+      detailsPaymentForm.addEventListener('submit', function(event) {
+        // Basic frontend validation
+        const cardNumber = document.getElementById('cardNumber').value.trim();
+        const expiryDate = document.getElementById('expiryDate').value.trim();
+        const cvv = document.getElementById('cvv').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const email = document.getElementById('email').value.trim();
+
+        if (!/^\d{16}$/.test(cardNumber)) {
+          alert('Please enter a valid 16-digit card number.');
+          event.preventDefault();
+          return;
+        }
+
+        if (!/^(0[1-9]|1[0-2])\/([2-9][0-9])$/.test(expiryDate)) {
+          alert('Please enter a valid expiry date in MM/YY format.');
+          event.preventDefault();
+          return;
+        }
+
+        if (!/^\d{3,4}$/.test(cvv)) {
+          alert('Please enter a valid CVV.');
+          event.preventDefault();
+          return;
+        }
+
+        if (!/^[0-9]{10,}$/.test(phone)) {
+          alert('Please enter a valid phone number.');
+          event.preventDefault();
+          return;
+        }
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          alert('Please enter a valid email address.');
+          event.preventDefault();
+          return;
+        }
+
+        // Include data from previous steps
+        const currentBookingData = JSON.parse(localStorage.getItem('currentBooking')) || {};
+        for (const key in currentBookingData) {
+          if (this.elements[key]) {
+            const hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = key;
+            hiddenInput.value = currentBookingData[key];
+            this.appendChild(hiddenInput);
+          }
+        }
+
+        // Set the form's action URL dynamically
+        this.action = config.backendUrl;
+      });
+    });
+  </script>
+</body>
+</html>
